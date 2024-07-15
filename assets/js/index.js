@@ -22,34 +22,47 @@ function StartPage(){
     });
 
     form.addEventListener('submit', (e) => {
-        const data = Object.fromEntries(new FormData(e.target).entries());
-        if(arrayUsers.some(user => data.email == user.email)){
+        
+        e.preventDefault();
+        
+        if(arrayUsers.some(user => form.email.value == user.email)){
             e.preventDefault();
             alert('Email já cadastrado! Tente outro email.');
             return ;
         }else{
-            arrayUsers.push(data);
+            arrayUsers.push(factoryUser(form.nome.value, form.dataNasc.value, form.tel.value, form.email.value));
             localStorage.setItem('users', JSON.stringify(arrayUsers));
             alert('Usuário cadastrado com sucesso!');
         }
     });
 }
 
+function factoryUser(nome, dataNasc, tel, email){
+    const user = {
+        userNome: nome,
+        userDataNasc: dataNasc,
+        userTel: tel,
+        userEmail: email,
+    }
+    return user;
+
+}
+
 function showAllUsers(table, arrayUsers){
-    return arrayUsers.forEach((user, index) => {
+    return arrayUsers.forEach(user => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-            <td scope="row">${user.nome}</td>
-            <td>${user.dataNasc}</td>
-            <td>${user.tel}</td>
-            <td>${user.email}</td>
+            <td scope="row">${user.userNome}</td>
+            <td>${user.userDataNasc}</td>
+            <td>${user.userTel}</td>
+            <td>${user.userEmail}</td>
         `;
         // Create a button element
         const button = document.createElement('button');
         button.textContent = 'Excluir';
         button.classList.add('delete');
         // Add an event listener instead of setting onclick attribute
-        button.addEventListener('click', () => deleteUser(user.email));
+        button.addEventListener('click', () => deleteUser(user.userEmail));
         
         tr.appendChild(button);
         table.appendChild(tr);
