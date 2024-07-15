@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Cadastro</title>
+</head>
+<body>
+    <div>
+        <H1>Cadastro de usuários</H1>
+        <form action="#">
+            <div style="display: flex; flex-direction: column; max-width: 30%; margin-left: 5%;">
+                <label for="nome">Nome: </label>
+                <input type="text" name="nome" id="nome" placeholder="Nome">
+                <br/>
+                <label for="nome">Data de Nascimento: </label>
+                <input type="text" name="dataNasc" id="dataNasc" placeholder="Data de Nascimento">
+                <br/>
+                <label for="nome">Telefone: </label>
+                <input type="text" name="tel" id="tel" placeholder="Telefone">
+                <br/>
+                <label for="nome">E-mail: </label>
+                <input type="text" name="email" id="email" placeholder="E-mail">
+                <br/>
+                <button type="submit">Cadastrar novo usuário</button>
+            </div>
+        </form>
+        <div id="registeredUsers">
+            <h2>Usuários Cadastrados</h2>
+            <input type="text" id="searchUser" placeholder="Digite o nome do usuário que deseja pesquisar">
+            <button id="btnSearchUser">Pesquisar</button>
+            <button id="btnClearSearch">Limpar Pesquisar</button>
+            <table id="usersRegister">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Data de Nascimento</th>
+                        <th>Telefone</th>
+                        <th>E-mail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="assets/js/index.js"></script>
+</body>
+</html>
