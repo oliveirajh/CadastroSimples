@@ -1,18 +1,34 @@
 function StartPage(){
     const form = document.querySelector('form');
     const table = document.querySelector('#usersRegister tbody');
+    const inputSearch = document.querySelector('#searchUser');
+    const btnSearchUser = document.querySelector('#btnSearchUser');
+    const btnClearSearch = document.querySelector('#btnClearSearch');
 
     const arrayUsers = getUsers();
     showAllUsers(table, arrayUsers);
 
+    btnSearchUser.addEventListener('click', () => {
+        const search = inputSearch.value;
+        const filteredUsers = arrayUsers.filter(user => user.nome.toLowerCase().includes(search.toLowerCase()));
+        table.innerHTML = '';
+        showAllUsers(table, filteredUsers);
+    });
+
+    btnClearSearch.addEventListener('click', () => {
+        inputSearch.value = '';
+        table.innerHTML = '';
+        showAllUsers(table, arrayUsers);
+    });
+
     form.addEventListener('submit', (e) => {
         const data = Object.fromEntries(new FormData(e.target).entries());
-        arrayUsers.push(data);
         if(arrayUsers.some(user => data.email == user.email)){
             e.preventDefault();
             alert('Email já cadastrado! Tente outro email.');
             return ;
         }else{
+            arrayUsers.push(data);
             localStorage.setItem('users', JSON.stringify(arrayUsers));
             alert('Usuário cadastrado com sucesso!');
         }
