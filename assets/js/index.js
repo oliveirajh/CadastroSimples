@@ -39,7 +39,7 @@ function showAllUsers(table, arrayUsers){
     return arrayUsers.forEach((user, index) => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-            <td>${user.nome}</td>
+            <td scope="row">${user.nome}</td>
             <td>${user.dataNasc}</td>
             <td>${user.tel}</td>
             <td>${user.email}</td>
@@ -47,8 +47,10 @@ function showAllUsers(table, arrayUsers){
         // Create a button element
         const button = document.createElement('button');
         button.textContent = 'Excluir';
+        button.classList.add('delete');
         // Add an event listener instead of setting onclick attribute
         button.addEventListener('click', () => deleteUser(user.email));
+        
         tr.appendChild(button);
         table.appendChild(tr);
     })

@@ -1,0 +1,40 @@
+table {
+    margin-top: 15px;
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid #000;
+}
+
+td, th {
+    border: 1px solid #000;
+    padding: 8px;
+}
+
+.delete {
+    width: 50%;
+    height: 30px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.boxForm {
+    padding: 2%;
+    display: flex;
+    border-radius: 15px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #dfdfdf;
+}
+
+.boxForm input {
+    width: 50%;
+    height: 20px;
+}
+
+#searchUser {
+    width: 50%;
+    height: 30px;
+}
