@@ -34,7 +34,7 @@ function StartPage(){
         
         e.preventDefault();
         
-        if(arrayUsers.some(user => form.email.value == user.email)){
+        if(arrayUsers.some(user => String(form.email.value).toLowerCase() == String(user.userEmail).toLowerCase())){
             e.preventDefault();
             alert('Email já cadastrado! Tente outro email.');
             return ;
