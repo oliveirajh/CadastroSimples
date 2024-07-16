@@ -10,7 +10,7 @@ function StartPage(){
 
     btnSearchUser.addEventListener('click', () => {
         const search = inputSearch.value;
-        const filteredUsers = arrayUsers.filter(user => user.nome.toLowerCase().includes(search.toLowerCase()));
+        const filteredUsers = arrayUsers.filter(user => user.userNome.toLowerCase().includes(search.toLowerCase()));
         table.innerHTML = '';
         showAllUsers(table, filteredUsers);
     });
