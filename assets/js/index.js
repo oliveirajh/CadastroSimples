@@ -33,6 +33,7 @@ function StartPage(){
             arrayUsers.push(factoryUser(form.nome.value, form.dataNasc.value, form.tel.value, form.email.value));
             localStorage.setItem('users', JSON.stringify(arrayUsers));
             alert('Usuário cadastrado com sucesso!');
+            location.reload();
         }
     });
 }
@@ -40,28 +41,40 @@ function StartPage(){
 function factoryUser(nome, dataNasc, tel, email){
     const user = {
         userNome: nome,
-        userDataNasc: dataNasc,
+        userDataNasc: DateLocal(dataNasc),
         userTel: tel,
         userEmail: email,
     }
     return user;
+}
 
+function DateLocal(date){
+    const [year, month, day] = date.split('-');
+    const dateToConvert = new Date(year, month - 1, day);
+    return dateToConvert.toLocaleDateString('pt-BR');
 }
 
 function showAllUsers(table, arrayUsers){
+    if(arrayUsers.length === 0){
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td colspan="5" style="text-align:center">Nenhum usuário cadastrado</td>`;
+        table.appendChild(tr);
+        return ;
+    }
+
     return arrayUsers.forEach(user => {
         const tr = document.createElement('tr');
+
         tr.innerHTML = `
             <td scope="row">${user.userNome}</td>
             <td>${user.userDataNasc}</td>
             <td>${user.userTel}</td>
             <td>${user.userEmail}</td>
         `;
-        // Create a button element
+
         const button = document.createElement('button');
         button.textContent = 'Excluir';
         button.classList.add('delete');
-        // Add an event listener instead of setting onclick attribute
         button.addEventListener('click', () => deleteUser(user.userEmail));
         
         tr.appendChild(button);
@@ -72,7 +85,7 @@ function showAllUsers(table, arrayUsers){
 function deleteUser(email){
     let userList = getUsers();
 
-    userList = userList.filter(user => user.email !== email);
+    userList = userList.filter(user => user.userEmail !== email);
     localStorage.setItem('users', JSON.stringify(userList));
 
     alert('Usuário excluído com sucesso!');
