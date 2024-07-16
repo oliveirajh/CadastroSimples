@@ -4,10 +4,19 @@ function StartPage(){
     const inputSearch = document.querySelector('#searchUser');
     const btnSearchUser = document.querySelector('#btnSearchUser');
     const btnClearSearch = document.querySelector('#btnClearSearch');
+    const inputTelefone = document.getElementById('tel');
 
+    
     const arrayUsers = getUsers();
     showAllUsers(table, arrayUsers);
-
+    
+    inputTelefone.addEventListener('input', function(e) {
+        let valor = e.target.value.replace(/\D/g, '');
+        valor = valor.replace(/^(\d{2})(\d)/g, '($1) $2');
+        valor = valor.replace(/(\d)(\d{4})$/, '$1-$2');
+        e.target.value = valor;
+    });
+    
     btnSearchUser.addEventListener('click', () => {
         const search = inputSearch.value;
         const filteredUsers = arrayUsers.filter(user => user.userNome.toLowerCase().includes(search.toLowerCase()));
