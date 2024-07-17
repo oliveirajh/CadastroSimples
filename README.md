@@ -62,13 +62,13 @@ Entre na pasta src do projeto.
 E basta abrir o arquivo index.html.
 
 ### Inicio
-
+***
 Ao abrir, você irá se deparar com essa tela, onde você conseguirá fazer tudo através dela:
 
 ![App Screenshot](./src/assets/images/Inicio.png)
 
 ### Cadastrando um Usuário
-
+***
 Para cadastrar um usuário, basta Preencher todos os campos de maneira correta e clicar em cadastrar novo usuário:
 > Lembretes:
 * E-mail e Telefones são únicos para cada usuário, não podem ser repetidos
@@ -83,7 +83,7 @@ e Logo em seguida da confirmação, o usuário aparecerá na tabela
 ![App Screenshot](./src/assets/images/Sucesso2.png)
 
 ### Excluindo usuário
-
+***
 Para excluir um usuário Desejado, basta clicar em Excluir na linah do usuário e logo em seguida confirmar o alerta com OK, da seguinte maneira:
 
 ![App Screenshot](./src/assets/images/Exclusao.png)
@@ -104,13 +104,13 @@ Apenas irá mostrar um alerta e nada acontecerá
 
 
 ### Possíveis Erros ao cadastrar usuário
-
+***
 Caso tente cadastrar um usuário menor de 18 anos, o sistema irá emitir um alerta e reiniciar a operação de cadastrado
 
 ![App Screenshot](./src/assets/images/ErroIdade.png)
 
 ### Filtrando Usuário
-
+***
 Caso tenha mais que um usuário e deseje pesquisar/filtrar pelo nome, basta você digitar o nome do usuário e Clicar em Pesquisar que aparececerá somente os usuários que forem iguais ao que você digitou:
 
 ![App Screenshot](./src/assets/images/Filtro1.png)
@@ -122,7 +122,7 @@ Caso deseje remover o filtro, basta clicar em limpar pesquisa e pronto, voltrá 
 ![App Screenshot](./src/assets/images/Filtro1.png)
 
 ### Outros possíveis erros
-
+***
 Caso você tente adicionar um usuário no qual ja tenha email e/ou telefone cadastrado, o seguinte alerta irá aparecer: 
 
 ![App Screenshot](./src/assets/images/ErroTelEmail.png)
