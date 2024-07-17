@@ -57,12 +57,12 @@ function addUser(form, arrayUsers){
     if(arrayUsers.some(user => String(form.email.value).toLowerCase() == String(user.userEmail).toLowerCase())){
         alert('Email já cadastrado! Tente outro email.');
         return ;
-    }else{
-        arrayUsers.push(factoryUser(form.nome.value, form.dataNasc.value, form.tel.value, form.email.value));
-        localStorage.setItem('users', JSON.stringify(arrayUsers));
-        alert('Usuário cadastrado com sucesso!');
-        location.reload();
     }
+    
+    arrayUsers.push(factoryUser(form.nome.value, form.dataNasc.value, form.tel.value, form.email.value));
+    localStorage.setItem('users', JSON.stringify(arrayUsers));
+    alert('Usuário cadastrado com sucesso!');
+    location.reload();
 }
 
 //Converter data para formato local
