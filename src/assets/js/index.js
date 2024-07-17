@@ -28,8 +28,7 @@ function StartPage(){
     });
 
     form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        addUser(form, arrayUsers);
+        addUser(e, form, arrayUsers);
     });
 }
 
@@ -53,9 +52,16 @@ function factoryUser(nome, dataNasc, tel, email){
 }
 
 //Adicionar usuário
-function addUser(form, arrayUsers){
-    if(arrayUsers.some(user => String(form.email.value).toLowerCase() == String(user.userEmail).toLowerCase())){
-        alert('Email já cadastrado! Tente outro email.');
+function addUser(e,form, arrayUsers){
+    if(arrayUsers.some(user => String(form.email.value).toLowerCase() == String(user.userEmail).toLowerCase() || String(form.tel.value).toLowerCase() == String(user.userTel).toLowerCase())){
+        e.preventDefault();
+        alert('Email e/ou Telefone já cadastrado! Tente outro email e/ou telefone.');
+        return ;
+    }
+
+    if(ValidateBirthDate(form.dataNasc.value) == false){
+        e.preventDefault();
+        alert('Usuário menor de 18 anos! Cadastro não permitido.');
         return ;
     }
     
@@ -63,6 +69,14 @@ function addUser(form, arrayUsers){
     localStorage.setItem('users', JSON.stringify(arrayUsers));
     alert('Usuário cadastrado com sucesso!');
     location.reload();
+}
+
+function ValidateBirthDate(date){
+    const [year, month, day] = date.split('-');
+    const dateToConvert = new Date(year, month - 1, day);
+    const currentDate = new Date();
+    const age = currentDate.getFullYear() - dateToConvert.getFullYear();
+    return age >= 18;
 }
 
 //Converter data para formato local
@@ -92,12 +106,16 @@ function showUsers(table, arrayUsers){
 //Excluir usuário
 function deleteUser(email){
     let userList = getUsers();
-
-    userList = userList.filter(user => user.userEmail !== email);
-    localStorage.setItem('users', JSON.stringify(userList));
-
-    alert('Usuário excluído com sucesso!');
-    location.reload();
+    if(confirm('Deseja realmente excluir este usuário?')){
+        userList = userList.filter(user => user.userEmail !== email);
+        localStorage.setItem('users', JSON.stringify(userList));
+    
+        alert('Usuário excluído com sucesso!');
+        location.reload();
+    }else{
+        alert('Operação cancelada!');
+        location.reload();
+    }
 }
 
 //Obter usuários
