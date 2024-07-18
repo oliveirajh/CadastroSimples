@@ -1,4 +1,4 @@
-import Factory from './factory.js';
+import Factory from './classes/factory.js';
 import { maskPhone } from './utils/utils.js';
 addEventListener('DOMContentLoaded', StartPage)
 
@@ -10,7 +10,7 @@ function StartPage(){
     const myFactory = new Factory();
     myFactory.showUser();
     
-
+    // Máscara para telefone
     inputTelefone.addEventListener('input', e => maskPhone(e));
 
     // Filtrar usuário
