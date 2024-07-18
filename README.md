@@ -23,19 +23,30 @@ Pelo fato do Projeto ser simples e não muito extenso, decidi por usar apenas a 
 ├── src
   ├── index.html
   └── assets
+        ├───images
         ├───css
         │ └── styles.css
-        ├──js
-          └── index.js
+        └──js
+          ├──classes
+          │     ├──factory.js
+          │     └──user.js
+          ├──utils
+          │     └──utils.js
+          └──index.js
 ```
+A pasta `images`, possui apenas prints para a criação do Readme
 
 O Arquivo `index.html`, contém o HTML para criar a visualização da tela, onde há um formulário básico e uma tabela, para realizar a exibição dos usuários cadastrados.
 
 O Arquivo `styles.css`, contem o CSS para realizar a estilização básica do arquivo HTML.
 
-E por fim, e mais importante, o `index.js`, nele está toda a lógica do desenvolvimento e criação dos usuários, ele possui uma função principal que é executada quando o DOM é carregado, e algumas outras funções para realizar as necessidades do sistema.
+O `index.js`, contém toda a lógica de manipulação da DOM chamando os métodos necessários para cada evento.
 
+O `factory.js` é a classe que concentra toda a lógica e métodos para criação usuários, inserção na tabela, remoção e pesquisa.
 
+O `user.js` é a classe responsavél por definir os atributos do usuário e seus metódos, caso tenha algum.
+
+O `utils.js` é um arquivo .js que possui diversas funções que podem ser utilizadas muitas vezes, por diferentes arquivos, como conversões por exemplo.
 
 
 
@@ -44,7 +55,6 @@ E por fim, e mais importante, o `index.js`, nele está toda a lógica do desenvo
 - Cadastro de usuários
 - Exclusão de usuários
 - Filtrar por nome de usuário
-
 
 
 ## Utilizando o Sistema
