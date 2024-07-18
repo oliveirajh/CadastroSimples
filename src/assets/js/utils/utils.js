@@ -12,3 +12,10 @@ export function ValidateBirthDate(date){
     const age = currentDate.getFullYear() - dateToConvert.getFullYear();
     return age >= 18;
 }
+
+export function maskPhone(e){
+    let valor = e.target.value.replace(/\D/g, '');
+    valor = valor.replace(/^(\d{2})(\d)/g, '($1) $2');
+    valor = valor.replace(/(\d)(\d{4})$/, '$1-$2');
+    e.target.value = valor;
+}

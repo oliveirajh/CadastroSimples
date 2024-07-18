@@ -1,4 +1,5 @@
 import Factory from './factory.js';
+import { maskPhone } from './utils/utils.js';
 addEventListener('DOMContentLoaded', StartPage)
 
 function StartPage(){
@@ -13,9 +14,7 @@ function StartPage(){
     inputTelefone.addEventListener('input', e => maskPhone(e));
 
     // Filtrar usuário
-    btnSearchUser.addEventListener('click', (e) => {
-        myFactory.filterUsers(e);
-    });
+    btnSearchUser.addEventListener('click', () => myFactory.filterUsers());
 
     //Limpar Filtros
     btnClearSearch.addEventListener('click', () => {
@@ -28,9 +27,3 @@ function StartPage(){
     });
 }
 
-function maskPhone(e){
-    let valor = e.target.value.replace(/\D/g, '');
-    valor = valor.replace(/^(\d{2})(\d)/g, '($1) $2');
-    valor = valor.replace(/(\d)(\d{4})$/, '$1-$2');
-    e.target.value = valor;
-}

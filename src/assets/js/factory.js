@@ -50,7 +50,7 @@ class Factory {
     }
 
     showUser(filteredUsers = ''){
-        const arrayUsers = filteredUsers.length ? filteredUsers : this.arrayUsers
+        const arrayUsers = filteredUsers.length ||Array.isArray(filteredUsers) ? filteredUsers : this.arrayUsers
         this.table.innerHTML = arrayUsers.length ? '' : `<tr><td colspan="5" style="text-align:center">Nenhum usuário cadastrado</td></tr>`;
 
         return arrayUsers.map(user => {
