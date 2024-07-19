@@ -1,6 +1,5 @@
 import {ValidateBirthDate } from '../utils/utils.js';
-import User from './user.js';
-class Factory {
+class UserManager {
     
     constructor(){
         this.arrayUsers = this.getUsers();
@@ -8,11 +7,6 @@ class Factory {
         this.inputSearch = document.querySelector('#searchUser');
     }
     
-    //Implementação do Factory Method
-    criarUsuario(nome, dataNasc, tel, email) {
-        return new User(nome, dataNasc, tel, email);
-    }
-
     //Metodo para adicionar usuários ao LocalStorage
     addUser(e, userCreate){
         //Verifica se o e-mail e/ou telefone já estão cadastrados
@@ -98,4 +92,4 @@ class Factory {
 
 }
 
-export default Factory;
+export default UserManager;
