@@ -22,6 +22,7 @@ function StartPage(){
     btnClearSearch.addEventListener('click', () => uManager.clearFilters());
 
     form.addEventListener('submit', (e) => {
+        //Chamando a Factory para criar o usuário
         let user = UserFactory.criarUsuario(form.nome.value, form.dataNasc.value, form.tel.value, form.email.value);
         uManager.addUser(e, user) ? form.reset() : '';
     });
