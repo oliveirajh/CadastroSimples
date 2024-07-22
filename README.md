@@ -45,7 +45,7 @@ O `index.js`, contém toda a lógica de manipulação da DOM chamando os método
 
 O `userFactory.js` é a classe que concentra toda a lógica e métodos para criação usuários utilizando o Factory Method.
 
-O `userManager` é a classe responsável pela manipulação dos dados dos usuários, como consulta, filtro, inserção e remoção. 
+O `userManager.js` é a classe responsável pela manipulação dos dados dos usuários, como consulta, filtro, inserção e remoção. 
 
 O `user.js` é a classe responsavél por definir os atributos do usuário e seus metódos, caso tenha algum.
 
